@@ -1,5 +1,10 @@
 module.exports = {
-  extends: ['plugin:@web-configs/node', 'plugin:@web-configs/typescript', 'next/core-web-vitals'],
+  extends: [
+    'plugin:@web-configs/react',
+    'plugin:@web-configs/typescript',
+    'plugin:@web-configs/prettier',
+    'next/core-web-vitals',
+  ],
   env: {
     browser: true,
   },
