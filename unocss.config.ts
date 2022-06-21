@@ -15,4 +15,23 @@ export default defineConfig({
       },
     }),
   ],
+  shortcuts: {
+    'sns-icon': 'text-40px inline-block hover:text-orange transition delay-50 ease-in-out',
+  },
+  theme: {
+    colors: {
+      white: '#fff',
+      black: '#000',
+      gray100: '#f8f9fa',
+      gray200: '#e9ecef',
+      gray300: '#dee2e6',
+      gray400: '#ced4da',
+      gray500: '#adb5bd',
+      gray600: '#868e96',
+      gray700: '#495057',
+      gray800: '#343a40',
+      gray900: '#212529',
+      primary: '#fed136',
+    },
+  },
 });

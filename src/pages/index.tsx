@@ -1,4 +1,9 @@
-import Clients from '../components/templates/Clients';
+import Clients from '../components/organisms/Clients';
+import Twitter from '../components/atoms/Twitter';
+import Facebook from '../components/atoms/Facebook';
+import Medium from '../components/atoms/Medium';
+import Linkedin from '../components/atoms/Linkedin';
+import Github from '../components/atoms/Github';
 
 import type { NextPage } from 'next';
 
@@ -29,6 +34,11 @@ const Home: NextPage = () => {
   return (
     <>
       <Clients clients={clientsData} />
+      <Twitter userName="thundermiracle" />
+      <Facebook userName="thundermiracle" />
+      <Medium userName="thundermiracle" />
+      <Linkedin userName="thundermiracle" />
+      <Github userName="thundermiracle" />
     </>
   );
 };
