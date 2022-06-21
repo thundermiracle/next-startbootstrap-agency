@@ -8,4 +8,7 @@ module.exports = {
   env: {
     browser: true,
   },
+  rules: {
+    '@typescript-eslint/naming-convention': 'off',
+  },
 };
