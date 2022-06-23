@@ -10,6 +10,7 @@ const Medium: FC<Props> = ({ userName }) => (
   <SocialIcon
     href={`https://medium.com/@${userName}`}
     iconClassName="i-ant-design-medium-circle-filled"
+    a11yName={`medium of ${userName}`}
   />
 );
 

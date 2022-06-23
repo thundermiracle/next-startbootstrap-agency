@@ -10,6 +10,7 @@ const Linkedin: FC<Props> = ({ userName }) => (
   <SocialIcon
     href={`https://linkedin.com/in/${userName}`}
     iconClassName="i-ant-design-linkedin-filled"
+    a11yName={`linkedin of ${userName}`}
   />
 );
 
