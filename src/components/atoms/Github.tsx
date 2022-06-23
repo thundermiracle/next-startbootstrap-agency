@@ -7,7 +7,11 @@ interface Props {
 }
 
 const Github: FC<Props> = ({ userName }) => (
-  <SocialIcon href={`https://github.com/${userName}`} iconClassName="i-ant-design-github-filled" />
+  <SocialIcon
+    href={`https://github.com/${userName}`}
+    iconClassName="i-ant-design-github-filled"
+    a11yName={`github of ${userName}`}
+  />
 );
 
 export default Github;
