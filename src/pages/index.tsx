@@ -1,9 +1,10 @@
 import Clients from '../components/organisms/Clients';
-import Twitter from '../components/atoms/Twitter';
 import Facebook from '../components/atoms/Facebook';
+import Twitter from '../components/atoms/Twitter';
 import Medium from '../components/atoms/Medium';
 import Linkedin from '../components/atoms/Linkedin';
 import Github from '../components/atoms/Github';
+import ServiceIcon from '../components/atoms/ServiceIcon';
 
 import type { NextPage } from 'next';
 
@@ -39,6 +40,9 @@ const Home: NextPage = () => {
       <Medium userName="thundermiracle" />
       <Linkedin userName="thundermiracle" />
       <Github userName="thundermiracle" />
+      <ServiceIcon iconClassName="i-fa-shopping-cart" />
+      <ServiceIcon iconClassName="i-fa-laptop" />
+      <ServiceIcon iconClassName="i-fa-lock" />
     </>
   );
 };

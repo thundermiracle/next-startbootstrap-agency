@@ -16,7 +16,7 @@ export default defineConfig({
     }),
   ],
   shortcuts: {
-    'sns-icon': 'text-40px inline-block hover:text-orange transition delay-50 ease-in-out',
+    'sns-icon': 'text-10 inline-block hover:text-primary transition delay-50 ease-in-out',
   },
   theme: {
     colors: {
