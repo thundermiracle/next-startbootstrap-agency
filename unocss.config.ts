@@ -32,6 +32,7 @@ export default defineConfig({
       gray800: '#343a40',
       gray900: '#212529',
       primary: '#fed136',
+      muted: '#868e96',
     },
   },
 });
