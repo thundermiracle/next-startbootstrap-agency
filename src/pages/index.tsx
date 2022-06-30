@@ -1,10 +1,6 @@
 import Clients from '../components/organisms/Clients';
-import Facebook from '../components/atoms/Facebook';
-import Twitter from '../components/atoms/Twitter';
-import Medium from '../components/atoms/Medium';
-import Linkedin from '../components/atoms/Linkedin';
-import Github from '../components/atoms/Github';
 import Services from '../components/organisms/Services';
+import TeamMembers from '../components/organisms/TeamMembers';
 
 import type { NextPage } from 'next';
 
@@ -58,19 +54,59 @@ const servicesData = {
   ],
 };
 
+const teamMembersData = {
+  title: 'Our Amazing Team',
+  subTitle: 'Lorem ipsum dolor sit amet consectetur.',
+  footer:
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.',
+  data: [
+    {
+      imageSrc: '/images/teammembers/member-1.jpg',
+      header: 'Kay Garland',
+      subheader: 'Lead Designer',
+      social: {
+        twitter: '#',
+        facebook: '#',
+        linkedin: '#',
+      },
+    },
+    {
+      imageSrc: '/images/teammembers/member-2.jpg',
+      header: 'Larry Parker',
+      subheader: 'Lead Marketer',
+      social: {
+        twitter: '#',
+        facebook: '#',
+        medium: '#',
+      },
+    },
+    {
+      imageSrc: '/images/teammembers/member-3.jpg',
+      header: 'Diana Pertersen',
+      subheader: 'Lead Developer',
+      social: {
+        twitter: '#',
+        facebook: '#',
+        medium: '#',
+      },
+    },
+  ],
+};
+
 const Home: NextPage = () => {
   return (
     <>
       <Clients data={clientsData.data} />
-      <Twitter userName="thundermiracle" />
-      <Facebook userName="thundermiracle" />
-      <Medium userName="thundermiracle" />
-      <Linkedin userName="thundermiracle" />
-      <Github userName="thundermiracle" />
       <Services
         title={servicesData.title}
         subTitle={servicesData.subTitle}
         data={servicesData.data}
+      />
+      <TeamMembers
+        title={teamMembersData.title}
+        subTitle={teamMembersData.subTitle}
+        footer={teamMembersData.footer}
+        data={teamMembersData.data}
       />
     </>
   );
