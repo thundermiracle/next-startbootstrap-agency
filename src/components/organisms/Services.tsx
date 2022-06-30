@@ -1,16 +1,12 @@
 import Service from '../molecules/Service';
 import PageSection from '../molecules/PageSection';
 
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 
 interface Props {
   title: string;
   subTitle: string;
-  data: {
-    iconClassName: string;
-    header: string;
-    content: string;
-  }[];
+  data: ComponentProps<typeof Service>[];
 }
 
 const Services: FC<Props> = ({ title, subTitle, data }) => {
