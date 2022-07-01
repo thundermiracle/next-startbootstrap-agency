@@ -17,8 +17,8 @@
     "@unocss/reset": "^0.37.4",
     "clsx": "^1.1.1",
     "next": "^12.2.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@iconify-json/ant-design": "^1.1.2",
