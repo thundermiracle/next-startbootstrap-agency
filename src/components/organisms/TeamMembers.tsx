@@ -1,5 +1,6 @@
 import TeamMember from '../molecules/TeamMember';
-import PageSection from '../molecules/PageSection';
+
+import PageSection from './PageSection';
 
 import type { ComponentProps, FC } from 'react';
 
