@@ -17,7 +17,9 @@ export default defineConfig({
   ],
   shortcuts: {
     'sns-icon': 'text-10 inline-block hover:text-primary transition delay-50 ease-in-out',
+    'rounded-img-border': 'b-7 border-gray-200 rounded-full',
   },
+  rules: [[/^hw-(\d+)px$/, ([, length]) => ({ height: `${length}px`, width: `${length}px` })]],
   theme: {
     colors: {
       white: '#fff',
