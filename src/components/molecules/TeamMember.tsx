@@ -37,7 +37,7 @@ const TeamMember: FC<Props> = ({
 
   return (
     <div className="flex flex-col text-center items-center max-w-440px px-4 mb-50px">
-      <div className="h-239px b-7 border-gray-200 rounded-full">
+      <div className="hw-239px rounded-img-border">
         <Image
           className="rounded-full"
           src={imageSrc}

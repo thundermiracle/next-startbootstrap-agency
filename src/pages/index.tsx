@@ -1,6 +1,7 @@
 import Clients from '../components/organisms/Clients';
 import Services from '../components/organisms/Services';
 import TeamMembers from '../components/organisms/TeamMembers';
+import Timeline from '../components/organisms/Timeline';
 
 import type { NextPage } from 'next';
 
@@ -93,6 +94,48 @@ const teamMembersData = {
   ],
 };
 
+const timelineData = {
+  title: 'About',
+  subTitle: 'Lorem ipsum dolor sit amet consectetur.',
+  data: [
+    {
+      imageSrc: '/images/timelines/timeline-1.jpg',
+      imageAlt: 'Our Humble Beginnings',
+      header: '2009-2011',
+      subheader: 'Our Humble Beginnings',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.',
+    },
+    {
+      imageSrc: '/images/timelines/timeline-2.jpg',
+      imageAlt: 'An Agency is Born',
+      header: 'March 2011',
+      subheader: 'An Agency is Born',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.',
+    },
+    {
+      imageSrc: '/images/timelines/timeline-3.jpg',
+      imageAlt: 'Transition to Full Service',
+      header: 'December 2012',
+      subheader: 'Transition to Full Service',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.',
+    },
+    {
+      imageSrc: '/images/timelines/timeline-4.jpg',
+      imageAlt: 'Phase Two Expansion',
+      header: 'July 2014',
+      subheader: 'Phase Two Expansion',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.',
+    },
+    {
+      imageContent: 'Be Part\r\nOf Our\r\nStory!',
+    },
+  ],
+};
+
 const Home: NextPage = () => {
   return (
     <>
@@ -101,6 +144,11 @@ const Home: NextPage = () => {
         title={servicesData.title}
         subTitle={servicesData.subTitle}
         data={servicesData.data}
+      />
+      <Timeline
+        title={timelineData.title}
+        subTitle={timelineData.subTitle}
+        data={timelineData.data}
       />
       <TeamMembers
         title={teamMembersData.title}
