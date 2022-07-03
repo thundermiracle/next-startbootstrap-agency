@@ -23,11 +23,13 @@ const TimelineItem: FC<Props> = ({
   content,
 }) => {
   return (
-    <li className="list-none relative mb-100px min-h-170px">
-      <div className="absolute md:left-50% ml--85px">
-        <div className="hw-184px rounded-img-border bg-primary flex items-center justify-center">
+    <li className="relative md:mb-100px md:min-h-170px mb-50px min-h-50px before:display-table before:content-none after:display-table after:content-none after:clear-both">
+      <div className="absolute md:left-50% md:ml--92px">
+        <div className="md:hw-184px hw-80px rounded-img-border bg-primary flex items-center justify-center">
           {imageContent ? (
-            <h4 className="text-white whitespace-break-spaces">{imageContent}</h4>
+            <h4 className="text-white whitespace-break-spaces md:text-24px text-10px mb-0">
+              {imageContent}
+            </h4>
           ) : (
             <Image
               className="rounded-full"
@@ -40,17 +42,19 @@ const TimelineItem: FC<Props> = ({
         </div>
       </div>
       <div
-        className={clsx('relative w-41% pt-20px pb-100px pr-20px', {
-          'float-left text-right': direction === 'left',
-          'float-right text-left': direction === 'right',
-        })}
+        className={clsx(
+          'relative md:w-41% md:pl-20px md:pb-20px pl-100px pr-20px float-right text-left',
+          {
+            'md:float-left md:text-right': direction === 'left',
+          },
+        )}
       >
         <div className="mt-0">
           {header && <h4>{header}</h4>}
           {subheader && <h4>{subheader}</h4>}
         </div>
         {content && (
-          <div className="timeline-body">
+          <div>
             <p className="mb-0 text-muted">{content}</p>
           </div>
         )}
