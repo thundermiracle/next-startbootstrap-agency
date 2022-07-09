@@ -2,33 +2,9 @@ import Clients from '../components/organisms/Clients';
 import Services from '../components/organisms/Services';
 import TeamMembers from '../components/organisms/TeamMembers';
 import Timeline from '../components/organisms/Timeline';
+import Contact from '../components/organisms/Contact';
 
 import type { NextPage } from 'next';
-
-const clientsData = {
-  data: [
-    {
-      src: '/images/clients/creative-market.jpg',
-      alt: 'Creative Market',
-      href: 'https://creativemarket.com/',
-    },
-    {
-      src: '/images/clients/design-modo.jpg',
-      alt: 'Design Modo',
-      href: 'https://designmodo.com/',
-    },
-    {
-      src: '/images/clients/envato.jpg',
-      alt: 'Envato',
-      href: 'https://envato.com/',
-    },
-    {
-      src: '/images/clients/themeforest.jpg',
-      alt: 'Themeforest',
-      href: 'https://themeforest.com/',
-    },
-  ],
-};
 
 const servicesData = {
   title: 'services',
@@ -136,10 +112,42 @@ const timelineData = {
   ],
 };
 
+const clientsData = {
+  data: [
+    {
+      src: '/images/clients/creative-market.jpg',
+      alt: 'Creative Market',
+      href: 'https://creativemarket.com/',
+    },
+    {
+      src: '/images/clients/design-modo.jpg',
+      alt: 'Design Modo',
+      href: 'https://designmodo.com/',
+    },
+    {
+      src: '/images/clients/envato.jpg',
+      alt: 'Envato',
+      href: 'https://envato.com/',
+    },
+    {
+      src: '/images/clients/themeforest.jpg',
+      alt: 'Themeforest',
+      href: 'https://themeforest.com/',
+    },
+  ],
+};
+
+const contractData = {
+  title: "Let's Get In Touch!",
+  subTitle:
+    'Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!',
+  telephone: '+1 (234) 567-890',
+  email: 'contact@yourwebsite.com',
+};
+
 const Home: NextPage = () => {
   return (
     <>
-      <Clients data={clientsData.data} />
       <Services
         title={servicesData.title}
         subTitle={servicesData.subTitle}
@@ -155,6 +163,13 @@ const Home: NextPage = () => {
         subTitle={teamMembersData.subTitle}
         footer={teamMembersData.footer}
         data={teamMembersData.data}
+      />
+      <Clients data={clientsData.data} />
+      <Contact
+        title={contractData.title}
+        subTitle={contractData.subTitle}
+        telephone={contractData.telephone}
+        email={contractData.email}
       />
     </>
   );
