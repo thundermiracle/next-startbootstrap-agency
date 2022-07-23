@@ -9,6 +9,7 @@ interface Props {
   titleSeparator?: boolean;
   subTitle?: string;
   footer?: string;
+  bgGray?: boolean;
   children: ReactNode;
 }
 
@@ -19,12 +20,15 @@ const PageSection: FC<Props> = ({
   titleSeparator,
   subTitle,
   footer,
+  bgGray,
   children,
 }) => {
   return (
     <section
       id={id}
-      className={clsx('py-150px md:py-100px text-center md:px-0 px-12px', className)}
+      className={clsx('py-150px md:py-100px text-center md:px-0 px-12px', className, {
+        'bg-gray100': bgGray,
+      })}
     >
       <div className="container mx-auto">
         {title && <h2 className="case-upper text-40px mt-0 mb-15px">{title}</h2>}
