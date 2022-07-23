@@ -9,7 +9,7 @@ interface Props {
 const Facebook: FC<Props> = ({ userName }) => (
   <SocialIcon
     href={`https://facebook.com/${userName}`}
-    iconClassName="i-fa-brands-facebook"
+    iconClassName="i-entypo-social-facebook-with-circle"
     a11yName={`facebook of ${userName}`}
   />
 );
