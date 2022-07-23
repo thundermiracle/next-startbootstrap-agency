@@ -12,7 +12,7 @@ interface Props {
 
 const Timeline: FC<Props> = ({ title, subTitle, data }) => {
   return (
-    <PageSection id="timeline" title={title} subTitle={subTitle}>
+    <PageSection id="about" title={title} subTitle={subTitle}>
       <ul className="p-0 relative list-none before:left-40px md:before:left-50% before:absolute before:content-none before:top-0 before:bottom-0 before:w-2px before:bg-gray-200">
         {data.map(({ imageSrc, imageAlt, imageContent, header, subheader, content }, ind) => (
           <TimelineItem

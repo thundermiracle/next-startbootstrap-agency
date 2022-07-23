@@ -1,11 +1,20 @@
-import Clients from '../components/organisms/Clients';
+import Top from '../components/organisms/Top';
 import Services from '../components/organisms/Services';
+import Clients from '../components/organisms/Clients';
 import TeamMembers from '../components/organisms/TeamMembers';
 import Timeline from '../components/organisms/Timeline';
 import Contact from '../components/organisms/Contact';
 import Footer from '../components/organisms/Footer';
 
 import type { NextPage } from 'next';
+
+const topData = {
+  header: "It's Nice To Meet You",
+  subheader: 'Welcome To Our Studio!',
+  imageSrc: '/images/top/header-bg.jpg',
+  jumpToAnchor: 'about',
+  jumpToAnchorText: 'Tell Me More',
+};
 
 const servicesData = {
   title: 'services',
@@ -162,6 +171,7 @@ const footerData = {
 const Home: NextPage = () => {
   return (
     <>
+      <Top {...topData} />
       <Services
         title={servicesData.title}
         subTitle={servicesData.subTitle}
