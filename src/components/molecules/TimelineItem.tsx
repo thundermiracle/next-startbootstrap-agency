@@ -31,13 +31,14 @@ const TimelineItem: FC<Props> = ({
               {imageContent}
             </h4>
           ) : (
-            <Image
-              className="rounded-full"
-              src={imageSrc!}
-              width={170}
-              height={170}
-              alt={imageAlt || header || subheader}
-            />
+            <div className="hw-170px relative">
+              <Image
+                className="rounded-full"
+                layout="fill"
+                src={imageSrc!}
+                alt={imageAlt || header || subheader}
+              />
+            </div>
           )}
         </div>
       </div>

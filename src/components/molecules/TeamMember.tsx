@@ -38,13 +38,14 @@ const TeamMember: FC<Props> = ({
   return (
     <div className="flex flex-col text-center items-center max-w-440px px-4 mb-50px">
       <div className="hw-239px rounded-img-border">
-        <Image
-          className="rounded-full"
-          src={imageSrc}
-          width={225}
-          height={225}
-          alt={imageAlt || header || subheader}
-        />
+        <div className="hw-225px relative">
+          <Image
+            layout="fill"
+            className="rounded-full "
+            src={imageSrc}
+            alt={imageAlt || header || subheader}
+          />
+        </div>
       </div>
       <h4 className="mt-25px mb-0 transform-none">{header}</h4>
       <p className="mt-0 text-muted">{subheader}</p>
