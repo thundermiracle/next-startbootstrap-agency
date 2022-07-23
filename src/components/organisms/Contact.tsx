@@ -11,7 +11,7 @@ interface Props {
 
 const Contact: FC<Props> = ({ title, subTitle, telephone, email }) => {
   return (
-    <PageSection id="contact">
+    <PageSection id="contact" bgGray>
       <div className="flex justify-center">
         <div className="text-center max-w-4xl">
           <h2 className="mt-0">{title}</h2>

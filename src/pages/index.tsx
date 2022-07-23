@@ -3,6 +3,7 @@ import Services from '../components/organisms/Services';
 import TeamMembers from '../components/organisms/TeamMembers';
 import Timeline from '../components/organisms/Timeline';
 import Contact from '../components/organisms/Contact';
+import Footer from '../components/organisms/Footer';
 
 import type { NextPage } from 'next';
 
@@ -145,6 +146,19 @@ const contractData = {
   email: 'contact@yourwebsite.com',
 };
 
+const footerData = {
+  copyright: 'Copyright © Start Bootstrap 2020',
+  privacyText: 'Privacy Policy',
+  privacyHref: '#!',
+  termsText: 'Terms of Use',
+  termsHref: '#!',
+  social: {
+    twitter: '#',
+    facebook: '#',
+    medium: '#',
+  },
+};
+
 const Home: NextPage = () => {
   return (
     <>
@@ -170,6 +184,14 @@ const Home: NextPage = () => {
         subTitle={contractData.subTitle}
         telephone={contractData.telephone}
         email={contractData.email}
+      />
+      <Footer
+        copyright={footerData.copyright}
+        privacyText={footerData.privacyText}
+        privacyHref={footerData.privacyHref}
+        termsText={footerData.privacyText}
+        termsHref={footerData.termsHref}
+        social={footerData.social}
       />
     </>
   );
