@@ -23,7 +23,10 @@ export default defineConfig({
       'uppercase bg-primary color-white px-47px py-24px font-700 transition delay-50 ease-in-out cursor-pointer rd border-none text-18px',
     overlay: 'absolute top-0 left-0 right-0 bottom-0 rd',
   },
-  rules: [[/^hw-(\d+)px$/, ([, length]) => ({ height: `${length}px`, width: `${length}px` })]],
+  rules: [
+    [/^hw-(\d+)px$/, ([, length]) => ({ height: `${length}px`, width: `${length}px` })],
+    [/^hw-(\d+)%$/, ([, length]) => ({ height: `${length}%`, width: `${length}%` })],
+  ],
   theme: {
     colors: {
       white: '#fff',
