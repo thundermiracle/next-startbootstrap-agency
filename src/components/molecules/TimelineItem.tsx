@@ -31,7 +31,7 @@ const TimelineItem: FC<Props> = ({
               {imageContent}
             </h4>
           ) : (
-            <div className="hw-170px relative">
+            <div className="hw-100% relative">
               <Image
                 className="rounded-full"
                 layout="fill"
