@@ -5,6 +5,7 @@ import TeamMembers from '../components/organisms/TeamMembers';
 import Timeline from '../components/organisms/Timeline';
 import Contact from '../components/organisms/Contact';
 import Footer from '../components/organisms/Footer';
+import Portfolio from '../components/organisms/Portfolio';
 
 import type { NextPage } from 'next';
 
@@ -37,6 +38,43 @@ const servicesData = {
       header: 'Web Security',
       content:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.',
+    },
+  ],
+};
+
+const portfolioData = {
+  title: 'PORTFOLIO',
+  subTitle: 'Lorem ipsum dolor sit amet consectetur.',
+  data: [
+    {
+      imageSrc: '/images/portfolios/thumbnail-1.jpg',
+      header: 'Threads',
+      subheader: 'Illustration',
+    },
+    {
+      imageSrc: '/images/portfolios/thumbnail-2.jpg',
+      header: 'Explorer',
+      subheader: 'Graphic Design',
+    },
+    {
+      imageSrc: '/images/portfolios/thumbnail-3.jpg',
+      header: 'Finish',
+      subheader: 'Identity',
+    },
+    {
+      imageSrc: '/images/portfolios/thumbnail-4.jpg',
+      header: 'Lines',
+      subheader: 'Branding',
+    },
+    {
+      imageSrc: '/images/portfolios/thumbnail-5.jpg',
+      header: 'Southwest',
+      subheader: 'Website Design',
+    },
+    {
+      imageSrc: '/images/portfolios/thumbnail-6.jpg',
+      header: 'Window',
+      subheader: 'Photography',
     },
   ],
 };
@@ -176,6 +214,11 @@ const Home: NextPage = () => {
         title={servicesData.title}
         subTitle={servicesData.subTitle}
         data={servicesData.data}
+      />
+      <Portfolio
+        title={portfolioData.title}
+        subTitle={portfolioData.subTitle}
+        data={portfolioData.data}
       />
       <Timeline
         title={timelineData.title}
