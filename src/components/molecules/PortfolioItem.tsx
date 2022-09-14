@@ -8,10 +8,10 @@ interface Props {
   imageAlt?: string;
   header: string;
   subheader: string;
-  content?: string;
-  imageFileNameDetail?: string;
-  imageAltDetail?: string;
-  extraInfo?: any;
+  // content?: string;
+  // imageFileNameDetail?: string;
+  // imageAltDetail?: string;
+  // extraInfo?: any;
 }
 
 const PortfolioItem: FC<Props> = ({
@@ -19,10 +19,10 @@ const PortfolioItem: FC<Props> = ({
   imageAlt,
   header,
   subheader,
-  content,
-  imageFileNameDetail,
-  imageAltDetail,
-  extraInfo,
+  // content,
+  // imageFileNameDetail,
+  // imageAltDetail,
+  // extraInfo,
 }) => {
   return (
     <div className="m-0 md:basis-1/3 basis-1/1 max-w-400px max-h-410px bg-white mb-30px">
