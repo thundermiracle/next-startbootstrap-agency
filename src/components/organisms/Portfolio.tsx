@@ -14,8 +14,18 @@ const PortfolioItems: FC<Props> = ({ title, subTitle, data }) => {
   return (
     <PageSection id="portfolioitems" title={title} subTitle={subTitle} bgGray>
       <div className="flex justify-around flex-wrap">
-        {data.map((props) => (
-          <PortfolioItem key={props.imageSrc} {...props} />
+        {data.map(({ extraInfo, ...props }) => (
+          <PortfolioItem
+            key={props.imageSrc}
+            {...props}
+            extraInfo={
+              <ul>
+                {extraInfo?.map((ei: string) => (
+                  <li key={ei}>{ei}</li>
+                ))}
+              </ul>
+            }
+          />
         ))}
       </div>
     </PageSection>
