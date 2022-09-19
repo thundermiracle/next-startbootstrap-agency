@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import Image from 'next/image';
+
+import Dialog from '../atoms/Dialog';
 
 import type { FC } from 'react';
 
@@ -8,10 +10,10 @@ interface Props {
   imageAlt?: string;
   header: string;
   subheader: string;
-  // content?: string;
-  // imageFileNameDetail?: string;
-  // imageAltDetail?: string;
-  // extraInfo?: any;
+  content?: string;
+  imageSrcDetail?: string;
+  imageAltDetail?: string;
+  extraInfo?: any;
 }
 
 const PortfolioItem: FC<Props> = ({
@@ -19,14 +21,24 @@ const PortfolioItem: FC<Props> = ({
   imageAlt,
   header,
   subheader,
-  // content,
-  // imageFileNameDetail,
-  // imageAltDetail,
-  // extraInfo,
+  content,
+  imageSrcDetail,
+  imageAltDetail,
+  extraInfo,
 }) => {
+  const [showDetail, setShowDetail] = useState(false);
+
+  const handleShowDetail = useCallback(() => {
+    setShowDetail(true);
+  }, []);
+
+  const handleHideDetail = useCallback(() => {
+    setShowDetail(false);
+  }, []);
+
   return (
     <div className="m-0 md:basis-1/3 basis-1/1 max-w-400px max-h-410px bg-white mb-30px">
-      <div aria-hidden="true" onClick={() => {}} className="relative cursor-pointer block">
+      <div aria-hidden="true" onClick={handleShowDetail} className="relative cursor-pointer block">
         <Image
           className="img-fluid"
           layout="responsive"
@@ -43,6 +55,16 @@ const PortfolioItem: FC<Props> = ({
         <h4 className="m-0 transform-none">{header}</h4>
         {subheader ? <p className="m-0 text-16px text-muted">{subheader}</p> : null}
       </div>
+      <Dialog
+        show={showDetail}
+        onHide={handleHideDetail}
+        imageSrc={imageSrcDetail || imageSrc}
+        imageAlt={imageAltDetail || imageAlt}
+        header={header}
+        subheader={subheader}
+        content={content}
+        extraInfo={extraInfo}
+      />
     </div>
   );
 };
