@@ -12,7 +12,7 @@ interface Props {
 
 const PortfolioItems: FC<Props> = ({ title, subTitle, data }) => {
   return (
-    <PageSection id="portfolioitems" title={title} subTitle={subTitle} bgGray>
+    <PageSection id="portfolio" title={title} subTitle={subTitle} bgGray>
       <div className="flex justify-around flex-wrap">
         {data.map(({ extraInfo, ...props }) => (
           <PortfolioItem

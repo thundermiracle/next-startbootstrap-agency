@@ -39,3 +39,8 @@ hr {
   height: 1px;
   background-color: #adb5bd;
 }
+
+::selection {
+  background: #fed136;
+  text-shadow: none;
+}

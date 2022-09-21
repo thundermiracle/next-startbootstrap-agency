@@ -1,13 +1,20 @@
+import Navbar from '../components/organisms/Navbar';
 import Top from '../components/organisms/Top';
 import Services from '../components/organisms/Services';
 import Clients from '../components/organisms/Clients';
-import TeamMembers from '../components/organisms/TeamMembers';
+import TeamMembers from '../components/organisms/Team';
 import Timeline from '../components/organisms/Timeline';
 import Contact from '../components/organisms/Contact';
 import Footer from '../components/organisms/Footer';
 import Portfolio from '../components/organisms/Portfolio';
 
 import type { NextPage } from 'next';
+
+const navData = {
+  brand: 'Start Bootstrap',
+  menuText: 'Menu ',
+  menus: ['services', 'portfolio', 'about', 'team', 'contact'],
+};
 
 const topData = {
   header: "It's Nice To Meet You",
@@ -233,6 +240,7 @@ const footerData = {
 const Home: NextPage = () => {
   return (
     <>
+      <Navbar brand={navData.brand} menuText={navData.menuText} menus={navData.menus} />
       <Top {...topData} />
       <Services
         title={servicesData.title}
@@ -266,7 +274,7 @@ const Home: NextPage = () => {
         copyright={footerData.copyright}
         privacyText={footerData.privacyText}
         privacyHref={footerData.privacyHref}
-        termsText={footerData.privacyText}
+        termsText={footerData.termsText}
         termsHref={footerData.termsHref}
         social={footerData.social}
       />
