@@ -13,7 +13,7 @@ interface Props {
 
 const TeamMembers: FC<Props> = ({ title, subTitle, footer, data }) => {
   return (
-    <PageSection id="teammembers" title={title} subTitle={subTitle} footer={footer} bgGray>
+    <PageSection id="team" title={title} subTitle={subTitle} footer={footer} bgGray>
       <div className="flex justify-around flex-wrap">
         {data.map((props) => (
           <TeamMember key={props.imageSrc} {...props} />
