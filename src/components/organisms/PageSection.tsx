@@ -34,7 +34,9 @@ const PageSection: FC<Props> = ({
         {title && <h2 className="case-upper text-40px mt-0 mb-15px">{title}</h2>}
         {titleSeparator && <hr className="my-4" />}
         {subTitle && (
-          <h3 className="text-muted text-16px font-400 mb-75px mt-0 font-italic">{subTitle}</h3>
+          <h3 className="text-muted text-16px font-400 mb-75px mt-0 italic font-serif">
+            {subTitle}
+          </h3>
         )}
         <div className="container mx-auto">{children}</div>
         {footer && (

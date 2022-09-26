@@ -53,7 +53,7 @@ const PortfolioItem: FC<Props> = ({
       </div>
       <div className="max-w-400px my-0 mx-auto p-25px text-center b-white">
         <h4 className="m-0 transform-none">{header}</h4>
-        {subheader ? <p className="m-0 text-16px text-muted">{subheader}</p> : null}
+        {subheader ? <p className="m-0 text-16px text-muted font-serif">{subheader}</p> : null}
       </div>
       <Dialog
         show={showDetail}

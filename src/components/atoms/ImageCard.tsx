@@ -21,7 +21,7 @@ const ImageCard: FC<Props> = ({ className, imageSrc, imageAlt, header, subheader
       <div className="overlay">
         <div className="container h-100% mx-auto flex items-center justify-center">
           <div className="pt-300px pb-200px">
-            <div className="italic text-22px md:text-40px">{subheader}</div>
+            <div className="italic text-22px font-serif md:text-40px">{subheader}</div>
             <div className="uppercase mb-30px font-700 text-50px md:text-75px">{header}</div>
             {extraInfo}
           </div>
