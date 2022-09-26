@@ -11,7 +11,15 @@ export default defineConfig({
     presetWebFonts({
       provider: 'google',
       fonts: {
-        sans: 'Roboto',
+        montserrat: [
+          {
+            name: 'Montserrat',
+            weights: ['400', '700'],
+          },
+        ],
+        roboto: 'Roboto Slab',
+        droid: 'Droid Sans',
+        kaushan: 'Kaushan Script',
       },
     }),
   ],
