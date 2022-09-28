@@ -1,0 +1,5 @@
+{
+  "brand": "Start Bootstrap",
+  "menuText": "Menu ",
+  "menus": ["services", "portfolio", "about", "team", "contact"]
+}

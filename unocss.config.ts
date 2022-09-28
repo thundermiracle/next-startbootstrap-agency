@@ -36,6 +36,7 @@ export default defineConfig({
     [/^hw-(\d+)px$/, ([, length]) => ({ height: `${length}px`, width: `${length}px` })],
     [/^hw-(\d+)%$/, ([, length]) => ({ height: `${length}%`, width: `${length}%` })],
   ],
+  safelist: ['i-fa-shopping-cart', 'i-fa-laptop', 'i-fa-lock'],
   theme: {
     colors: {
       white: '#fff',

@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "src": "/images/clients/creative-market.jpg",
+      "alt": "Creative Market",
+      "href": "https://creativemarket.com/"
+    },
+    {
+      "src": "/images/clients/design-modo.jpg",
+      "alt": "Design Modo",
+      "href": "https://designmodo.com/"
+    },
+    {
+      "src": "/images/clients/envato.jpg",
+      "alt": "Envato",
+      "href": "https://envato.com/"
+    },
+    {
+      "src": "/images/clients/themeforest.jpg",
+      "alt": "Themeforest",
+      "href": "https://themeforest.com/"
+    }
+  ]
+}
