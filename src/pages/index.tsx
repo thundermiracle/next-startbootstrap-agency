@@ -10,6 +10,7 @@ import Timeline from '../components/organisms/Timeline';
 import Contact from '../components/organisms/Contact';
 import Footer from '../components/organisms/Footer';
 import Portfolio from '../components/organisms/Portfolio';
+import LanguageSelector from '../components/atoms/LanguageSelector';
 
 import type { GetStaticProps, NextPage } from 'next';
 
@@ -43,7 +44,12 @@ const Home: NextPage<HomeProps> = ({
   return (
     <>
       {navbarData && (
-        <Navbar brand={navbarData.brand} menuText={navbarData.menuText} menus={navbarData.menus} />
+        <Navbar
+          brand={navbarData.brand}
+          menuText={navbarData.menuText}
+          menus={navbarData.menus}
+          extraItems={<LanguageSelector />}
+        />
       )}
       {topData && (
         <Top
