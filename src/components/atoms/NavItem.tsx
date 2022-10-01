@@ -14,7 +14,7 @@ const NavItem: FC<NavItemProps> = ({ to, onClick, children }) => {
     <Nav.Item className="contents">
       <Link
         className="text-90% font-400 py-6px color-white cursor-pointer font-heading decoration-none tracking-wider h:color-primary md:py-18px md:px-16px"
-        activeClass="active"
+        activeClass="uno-layer-e1:color-primary"
         to={to}
         spy
         smooth="easeInOutQuart"
