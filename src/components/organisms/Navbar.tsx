@@ -11,7 +11,10 @@ import type { FC, ReactNode } from 'react';
 interface NavbarProps {
   brand: string;
   menuText?: string;
-  menus: string[];
+  menus: {
+    anchor: string;
+    text?: string;
+  }[];
   extraItems?: ReactNode;
 }
 
@@ -66,8 +69,10 @@ const Navbar: FC<NavbarProps> = ({ brand, menuText, menus, extraItems }) => {
         </RBNavbar.Toggle>
         <RBNavbar.Collapse>
           <RBNav className="uppercase ms-auto">
-            {menus.map((menu) => (
-              <NavItem key={menu} to={menu} onClick={closeMenu} />
+            {menus.map(({ anchor, text }) => (
+              <NavItem key={anchor} to={anchor} onClick={closeMenu}>
+                {text}
+              </NavItem>
             ))}
           </RBNav>
           {extraItems}
