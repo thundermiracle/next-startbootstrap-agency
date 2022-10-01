@@ -127,14 +127,16 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     return acc;
   }, {} as Record<string, any>);
 
+  // localeTextMapを読み込み
+  const localeTextMap = JSON.parse(
+    fs.readFileSync(`${process.cwd()}/contents/localeTextMap.json`, { encoding: 'utf8' }),
+  );
+
   return {
     props: {
       data,
       locale,
-      localeTextMap: {
-        en: 'English',
-        ja: '日本語',
-      },
+      localeTextMap,
     },
   };
 };
