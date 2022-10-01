@@ -116,7 +116,7 @@ const Home: NextPage<HomeProps> = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const basePath = `${process.cwd()}/contents/${locale}`;
 
   const files = fs.readdirSync(basePath, 'utf-8');
