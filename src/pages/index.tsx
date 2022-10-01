@@ -26,6 +26,8 @@ interface HomeProps {
     contractData?: Record<string, any>;
     footerData?: Record<string, any>;
   };
+  locale: string;
+  localeTextMap: Record<string, string>;
 }
 
 const Home: NextPage<HomeProps> = ({
@@ -40,6 +42,8 @@ const Home: NextPage<HomeProps> = ({
     contractData,
     footerData,
   },
+  locale,
+  localeTextMap,
 }) => {
   return (
     <>
@@ -48,13 +52,13 @@ const Home: NextPage<HomeProps> = ({
           brand={navbarData.brand}
           menuText={navbarData.menuText}
           menus={navbarData.menus}
-          extraItems={<LanguageSelector />}
+          extraItems={<LanguageSelector langKey={locale} langTextMap={localeTextMap} />}
         />
       )}
       {topData && (
         <Top
           header={topData.header}
-          subheader={topData.subHeader}
+          subheader={topData.subheader}
           imageSrc={topData.imageSrc}
           jumpToAnchor={topData.jumpToAnchor}
           jumpToAnchorText={topData.jumpToAnchorText}
@@ -112,8 +116,8 @@ const Home: NextPage<HomeProps> = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async (_context) => {
-  const basePath = `${process.cwd()}/contents/en`;
+export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {
+  const basePath = `${process.cwd()}/contents/${locale}`;
 
   const files = fs.readdirSync(basePath, 'utf-8');
   const data = files.reduce((acc, file) => {
@@ -126,6 +130,11 @@ export const getStaticProps: GetStaticProps = async (_context) => {
   return {
     props: {
       data,
+      locale,
+      localeTextMap: {
+        en: 'English',
+        ja: '日本語',
+      },
     },
   };
 };
