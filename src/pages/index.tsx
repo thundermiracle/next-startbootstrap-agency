@@ -1,6 +1,7 @@
-import Head from 'next/head';
 import fs from 'fs';
 import path from 'path';
+
+import Head from 'next/head';
 
 import Navbar from '../components/organisms/Navbar';
 import Top from '../components/organisms/Top';
