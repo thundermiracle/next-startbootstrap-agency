@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
+import Head from 'next/head';
+
 import Navbar from '../components/organisms/Navbar';
 import Top from '../components/organisms/Top';
 import Services from '../components/organisms/Services';
@@ -47,6 +49,18 @@ const Home: NextPage<HomeProps> = ({
 }) => {
   return (
     <>
+      <Head>
+        <title>Next StartBootstrap Agency</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="keywords"
+          content="next, next.js, startbootstrap, next-startbootstrap-agency, landing-page, landing, i18n, unocss, pnpm"
+        />
+        <meta
+          name="description"
+          content="Next.js version of startbootstrap-agency with i18n support."
+        />
+      </Head>
       {navbarData && (
         <Navbar
           brand={navbarData.brand}
