@@ -47,19 +47,27 @@ const Home: NextPage<HomeProps> = ({
   locale,
   localeTextMap,
 }) => {
+  const title = 'Next StartBootstrap Agency';
+  const description = 'Next.js version of startbootstrap-agency with i18n support.';
+  const ogType = 'website';
+
   return (
     <>
       <Head>
-        <title>Next StartBootstrap Agency</title>
+        <title>{title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="keywords"
           content="next, next.js, startbootstrap, next-startbootstrap-agency, landing-page, landing, i18n, unocss, pnpm"
         />
-        <meta
-          name="description"
-          content="Next.js version of startbootstrap-agency with i18n support."
-        />
+        <meta name="description" content={description} />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={description} />
+        <meta name="og:type" content={ogType} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="ThunderMiracle" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
       </Head>
       {navbarData && (
         <Navbar
