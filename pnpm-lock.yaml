@@ -39,7 +39,6 @@ specifiers:
   vite: ^3.1.4
 
 dependencies:
-  '@unocss/reset': 0.45.26
   clsx: 1.2.1
   next: 12.3.1_a6exmopoj4illbm7c6eh7topwe
   react: 18.2.0
@@ -63,6 +62,7 @@ devDependencies:
   '@unocss/preset-attributify': 0.45.26
   '@unocss/preset-uno': 0.45.26
   '@unocss/preset-web-fonts': 0.45.26
+  '@unocss/reset': 0.45.26
   '@web-configs/eslint-plugin': 0.5.0_nbnq7mmdgtr773l6oclgacn2ie
   '@web-configs/prettier': 0.1.2
   '@web-configs/typescript': 0.2.2
@@ -2334,6 +2334,7 @@ packages:
 
   /@unocss/reset/0.45.26:
     resolution: {integrity: sha512-9X0cSvGPXdZ1KAuiWzFWtcoyfC7b8j4GYHr4lDXRkPC5oI3CJhw4WcdvzTHVPqOX2CKqq731H4GhcQ5c5LBuHA==}
+    dev: true
 
   /@unocss/scope/0.45.26:
     resolution: {integrity: sha512-t5ADmEW9Rhf4Ku0DHwgPoy2mTU0eRrpx6QfXFWtWC+ZtHsjOcC9RXgWYXKZmINtiY+FzQ8A+v/k0wlIuvhJF7g==}
