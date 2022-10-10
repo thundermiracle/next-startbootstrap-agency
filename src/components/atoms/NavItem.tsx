@@ -19,6 +19,8 @@ const NavItem: FC<NavItemProps> = ({ to, onClick, children }) => {
         spy
         smooth="easeInOutQuart"
         onClick={onClick}
+        tabIndex={-1}
+        href="/"
       >
         {children || to}
       </Link>

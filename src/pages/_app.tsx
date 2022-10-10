@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>{title}</title>
         <meta
           name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+          content="minimum-scale=1, initial-scale=1, maximum-scale=5, width=device-width, shrink-to-fit=no, viewport-fit=cover"
         />
         <meta
           name="keywords"
@@ -45,7 +45,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png" />
         <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png" />
 
-        <link rel="icon" href="/favicon-32x32.png" type="image/png" />
+        <meta name="theme-color" content="#fed136" />
+        <link rel="icon" href="/icons/favicon-32x32.png" type="image/png" />
         <link rel="manifest" href="/manifest.json" crossOrigin="anonymous" />
       </Head>
       <SSRProvider>
