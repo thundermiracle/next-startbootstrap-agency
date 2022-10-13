@@ -116,6 +116,11 @@ const Home: NextPage<HomeProps> = ({
   );
 };
 
+interface Locale {
+  defaultLang: string;
+  localeTextMap: Record<string, string>;
+}
+
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const basePath = `${process.cwd()}/contents/${locale}`;
 
@@ -128,9 +133,9 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   }, {} as Record<string, any>);
 
   // localeTextMapを読み込み
-  const localeTextMap = JSON.parse(
-    fs.readFileSync(`${process.cwd()}/contents/localeTextMap.json`, { encoding: 'utf8' }),
-  );
+  const { localeTextMap } = JSON.parse(
+    fs.readFileSync(`${process.cwd()}/contents/locale.json`, { encoding: 'utf8' }),
+  ) as Locale;
 
   return {
     props: {
