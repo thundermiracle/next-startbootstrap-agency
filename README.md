@@ -13,7 +13,9 @@ pnpm dev
 
 - set defaultLocale & locales in `'./next.config.js'`
 
-- set localeTextMap in `'./contents/localeTextMap.json'`
+- set locale in `'./contents/locale.json'`
+
+- set meta data in `'./contents/meta.json'`
 
 - copy json files in `'contents/en'` folder and translate the contents
 
