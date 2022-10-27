@@ -38,11 +38,10 @@ const Dialog: FC<DialogProps> = ({
       <Modal.Body className="mx-auto">
         <p className="item-intro text-muted">{subheader}</p>
         <Image
-          layout="responsive"
           width={500}
           height={400}
           src={imageSrc}
-          alt={imageAlt || header || subheader}
+          alt={imageAlt || header || subheader || ''}
         />
         <p>{content}</p>
         {extraInfo}
