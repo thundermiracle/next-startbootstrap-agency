@@ -11,7 +11,7 @@ interface Props {
 const Client: FC<Props> = ({ src, href, alt }) => {
   const imgPart = (
     <div className="h-75px w-300px relative">
-      <Image className="container mx-auto block mx-auto" layout="fill" src={src} alt={alt} />
+      <Image className="container mx-auto block mx-auto" fill src={src} alt={alt} />
     </div>
   );
 
