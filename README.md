@@ -2,6 +2,10 @@
 
 Next.js version of startbootstrap-agency with i18n support. Based on [gatsby-startbootstrap-agency](https://github.com/thundermiracle/gatsby-startbootstrap-agency).
 
+## Why Next.js over GatsbyJS
+
+[https://thundermiracle.com/blog/en/2022-11-05-migrate-from-gatsbyjs-to-next/](https://thundermiracle.com/blog/en/2022-11-05-migrate-from-gatsbyjs-to-next/)
+
 ## Install
 
 ```shell
