@@ -36,3 +36,7 @@ yarn-error.log*
 
 sw.js*
 workbox-*.js*
+
+# playwright test-results
+/test-results
+/playwright-report

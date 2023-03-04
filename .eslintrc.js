@@ -1,3 +1,5 @@
+// @ts-check
+/** @type {import('@typescript-eslint/utils').TSESLint.Linter.Config} */
 module.exports = {
   extends: [
     'plugin:@web-configs/react',
@@ -11,4 +13,12 @@ module.exports = {
   rules: {
     '@typescript-eslint/naming-convention': 'off',
   },
+  overrides: [
+    {
+      files: ['playwright.config.ts'],
+      rules: {
+        'no-process-env': 'off',
+      },
+    },
+  ],
 };
