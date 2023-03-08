@@ -2,11 +2,12 @@ name: Checkbox Checked Workflow
 
 on:
   issue_comment:
-    types: [edited]
+    # types: [edited]
 
 jobs:
   checkbox-checked:
     runs-on: ubuntu-latest
+    if: ${{ github.event.issue.pull_request }}
     steps:
       - name: Check if checkbox is checked
         id: checkbox
