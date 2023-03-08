@@ -1,0 +1,29 @@
+name: Checkbox Checked Workflow
+
+on:
+  issue_comment:
+    types: [edited]
+
+jobs:
+  checkbox-checked:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if checkbox is checked
+        id: checkbox
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const comment = await github.issues.getComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id
+            });
+            const regex = /^- \[x\] My Checkbox is checked/m;
+            const checkboxChecked = regex.test(comment.data.body);
+            console.log(`Checkbox status: ${checkboxChecked}`);
+            return { checkboxChecked: checkboxChecked }
+
+      - name: Run some actions when checkbox is checked
+        if: steps.checkbox.outputs.checkboxChecked == true
+        run: echo "Checkbox is checked!"
