@@ -1,30 +1,44 @@
-name: Checkbox Checked Workflow
+name: snapshot
 
 on:
   issue_comment:
-    # types: [edited]
+    types: [edited]
 
 jobs:
-  checkbox-checked:
+  update-snapshots:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request }}
+    timeout-minutes: 5
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,  '- [x] Update All Snapshots') }}
+    container: mcr.microsoft.com/playwright:v1.31.2-focal
+    permissions:
+      contents: write
     steps:
-      - name: Check if checkbox is checked
-        id: checkbox
-        uses: actions/github-script@v4
+      - uses: actions/checkout@v3
+      
+      - run: corepack enable
+          
+      - uses: actions/setup-node@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const comment = await github.issues.getComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: context.payload.comment.id
-            });
-            const regex = /^- \[x\] My Checkbox is checked/m;
-            const checkboxChecked = regex.test(comment.data.body);
-            console.log(`Checkbox status: ${checkboxChecked}`);
-            return { checkboxChecked: checkboxChecked }
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
 
-      - name: Run some actions when checkbox is checked
-        if: steps.checkbox.outputs.checkboxChecked == true
-        run: echo "Checkbox is checked!"
+      - name: Install dependencies
+        run: pnpm install --ignore-scripts
+      
+      - name: Get Vercel's Alias Preview URL
+        id: alias-preview-url
+        uses: justincase-jp/vercel-preview-url-alias@0.2.1
+        with:
+          vercel_access_token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
+          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
+          fail_when_cancelled: true
+
+      - name: Update Snapshots
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        run: HOME=/root pnpm e2e:upd
+        env:
+          BASE_URL: https://${{ steps.alias-preview-url.outputs.preview_url_origin }}
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'chore: update changed snapshots'
