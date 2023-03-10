@@ -43,7 +43,7 @@ jobs:
           BASE_URL: https://${{ steps.alias-preview-url.outputs.preview_url_origin }}
 
       - run:
-          git status
+          HOME=/root git status
 
 
       - uses: stefanzweifel/git-auto-commit-action@v4
