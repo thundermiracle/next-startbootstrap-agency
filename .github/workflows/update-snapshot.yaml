@@ -43,7 +43,7 @@ jobs:
           BASE_URL: https://${{ steps.alias-preview-url.outputs.preview_url_origin }}
 
       - run:
-          HOME=/root git config --add safe.directory '/__w/next-startbootstrap-agency/next-startbootstrap-agency' --global 
+          HOME=/root git config --add safe.directory . --global;
           HOME=/root git status
 
 
