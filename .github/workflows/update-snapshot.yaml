@@ -1,20 +1,23 @@
 name: snapshot
 
 on:
-  issue_comment:
-    types: [edited]
+  # issue_comment:
+  #   types: [edited]
+  pull_request:
 
 jobs:
   update-snapshots:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,  '- [x] Update All Snapshots') }}
+    # if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,  '- [x] Update All Snapshots') }}
     container: mcr.microsoft.com/playwright:v1.31.2-focal
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v3
-      
+        with:
+          ref: ${{ github.head_ref }}
+
       - run: corepack enable
           
       - uses: actions/setup-node@v3
@@ -40,5 +43,14 @@ jobs:
           BASE_URL: https://${{ steps.alias-preview-url.outputs.preview_url_origin }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
+        id: auto-commit-action
         with:
           commit_message: 'chore: update changed snapshots'
+
+      - name: "Run if changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: echo "Changes!"
+
+      - name: "Run if no changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'false'
+        run: echo "No Changes!"
