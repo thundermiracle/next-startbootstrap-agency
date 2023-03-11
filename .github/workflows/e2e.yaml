@@ -35,7 +35,7 @@ jobs:
         uses: peter-evans/find-comment@v2
         id: fc
         with:
-          issue-number: ${{ github.event.number }}
+          issue-number: ${{ github.context.payload.issue.number }}
           comment-author: 'github-actions[bot]'
           body-includes: '### Check the checkbox to automatically update all changed snapshots'
 
@@ -46,7 +46,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v2
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ github.event.number }}
+          issue-number: ${{ github.context.payload.issue.number }}
           edit-mode: replace
           body: |
             ### Check the checkbox to automatically update all changed snapshots
