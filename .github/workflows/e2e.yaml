@@ -29,7 +29,8 @@ jobs:
           fail_when_cancelled: false
 
       - run:
-          HOME=/root apt-get install jq;
+          HOME=/root apt-get update;
+          HOME=/root apt-get install -y jq;
           echo ${{github}} | jq -r;
 
       - name: Find Comment for updating snapshots
