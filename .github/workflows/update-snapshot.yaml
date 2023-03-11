@@ -1,15 +1,14 @@
 name: snapshot
 
 on:
-  # issue_comment:
-  #   types: [edited]
-  pull_request:
+  issue_comment:
+    types: [edited]
 
 jobs:
   update-snapshots:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    # if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,  '- [x] Update All Snapshots') }}
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,  '- [x] Update All Snapshots') }}
     container: mcr.microsoft.com/playwright:v1.31.2-focal
     permissions:
       contents: write
