@@ -28,6 +28,9 @@ jobs:
           vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
           fail_when_cancelled: false
 
+      - run:
+          echo ${{github.context.payload}} | jq
+
       - name: Find Comment for updating snapshots
         if: |
           github.ref != 'refs/heads/main' &&
