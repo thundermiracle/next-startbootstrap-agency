@@ -40,3 +40,5 @@ workbox-*.js*
 # playwright test-results
 /test-results
 /playwright-report
+
+salt
