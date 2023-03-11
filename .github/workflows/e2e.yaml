@@ -8,6 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright:v1.31.2-focal
     steps:
+      - name: Get PR's issue number
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log("context.issue:", JSON.stringify(context.issue));
+            console.log("context.payload:", JSON.stringify(context.payload.pull_request));
+            core.setOutput('issue_number', context.issue.number);
+            throw new Error("")
+
       - uses: actions/checkout@v3
       
       - run: corepack enable
@@ -16,14 +25,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-
-      - name: Get PR's issue number
-        id: target-pull-request
-        uses: actions/github-script@v6
-        with:
-          script: |
-            console.log("context.issue.number:", context.issue.number)
-            core.setOutput('issue_number', context.issue.number);
 
       - name: Install dependencies
         run: pnpm install --ignore-scripts
@@ -35,6 +36,16 @@ jobs:
           vercel_access_token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
           vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
           fail_when_cancelled: false
+
+      - name: Get PR's issue number
+        if: |
+          github.ref != 'refs/heads/main' &&
+          steps.alias-preview-url.outputs.status == 'READY'
+        id: target-pull-request
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setOutput('issue_number', context.issue.number);
 
       - name: Find Comment for updating snapshots
         if: |
