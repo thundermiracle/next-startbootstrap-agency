@@ -13,24 +13,14 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Get Vercel's Alias Preview URL
-        id: alias-preview-url
-        uses: justincase-jp/vercel-preview-url-alias@0.2.1
-        with:
-          vercel_access_token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
-          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
-          fail_when_cancelled: true
-
       - name: Checkout
-        if: steps.alias-preview-url.outputs.status == 'READY'
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ github.head_ref }}
 
-      - name: Get the target branch's name
-        if: steps.alias-preview-url.outputs.status == 'READY'
+      - name: Get target branch's head commit info
         id: target-pull-request
         uses: actions/github-script@v6
         with:
@@ -39,16 +29,26 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.issue.number,
-            })).data.head.ref
+            })).data.head
+
+      - name: Get Vercel's Alias Preview URL
+        id: alias-preview-url
+        uses: justincase-jp/vercel-preview-url-alias@0.3.0
+        with:
+          vercel_access_token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
+          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
+          fail_when_cancelled: true
+          commit_sha: ${{ steps.target-pull-request.outputs.result.sha }}
 
       - name: Checkout target branch
         if: steps.alias-preview-url.outputs.status == 'READY'
         run:
           git config --global --add safe.directory /__w/next-startbootstrap-agency/next-startbootstrap-agency;
           git fetch;
-          git checkout ${{ steps.target-pull-request.outputs.result }};
+          git checkout ${{ steps.target-pull-request.outputs.result.ref }};
 
-      - run: corepack enable
+      - if: steps.alias-preview-url.outputs.status == 'READY'
+        run: corepack enable
           
       - uses: actions/setup-node@v3
         if: steps.alias-preview-url.outputs.status == 'READY'
