@@ -8,11 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright:v1.31.2-focal
     steps:
-      - run:
-          echo ${{github.event}};
-          echo ${{context.issue.number}};
-          echo ${{github.context.issue.number}};
-
       - uses: actions/checkout@v3
       
       - run: corepack enable
@@ -21,6 +16,11 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
+
+      - run:
+          echo ${{github.event}};
+          echo ${{context.issue.number}};
+          echo ${{github.context.issue.number}};
 
       - name: Install dependencies
         run: pnpm install --ignore-scripts
