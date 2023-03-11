@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright:v1.31.2-focal
     steps:
+      - run:
+          echo ${{github.event}};
+          echo ${{context.issue.number}};
+          echo ${{github.context.issue.number}};
+
       - uses: actions/checkout@v3
       
       - run: corepack enable
@@ -27,11 +32,6 @@ jobs:
           vercel_access_token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
           vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
           fail_when_cancelled: false
-
-      - run:
-          HOME=/root apt-get update;
-          HOME=/root apt-get install -y jq;
-          echo ${{github}} | jq -r;
 
       - name: Find Comment for updating snapshots
         if: |
