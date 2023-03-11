@@ -28,6 +28,26 @@ jobs:
           vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
           fail_when_cancelled: false
 
+      - name: Find Comment for updating snapshots
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '### Update All Changed Snapshots'
+
+      - name: Comment
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.number }}
+          edit-mode: replace
+          body: |
+            ### Check the checkbox to automatically update all changed snapshots
+            - [ ] Update All Snapshots
+
       - name: Tests
         if: steps.alias-preview-url.outputs.status == 'READY'
         run: HOME=/root pnpm e2e
