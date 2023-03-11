@@ -29,7 +29,8 @@ jobs:
           fail_when_cancelled: false
 
       - run:
-          echo ${{github.context.payload}} | jq
+          sudo apt-get install jq;
+          echo ${{github}} | jq -r;
 
       - name: Find Comment for updating snapshots
         if: |
