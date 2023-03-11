@@ -13,22 +13,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{ github.head_ref }}
-
-      - run: corepack enable
-          
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --ignore-scripts
-      
       - name: Get Vercel's Alias Preview URL
         id: alias-preview-url
         uses: justincase-jp/vercel-preview-url-alias@0.2.1
@@ -37,16 +21,50 @@ jobs:
           vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
           fail_when_cancelled: true
 
+      - name: Checkout
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.head_ref }}
+
+      - name: Get the target branch's name
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        id: target-pull-request
+        uses: actions/github-script@v6
+        with:
+          script: |
+            return (await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            })).data.head.ref
+
+      - name: Checkout target branch
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        run:
+          git config --global --add safe.directory /__w/next-startbootstrap-agency/next-startbootstrap-agency;
+          git fetch;
+          git checkout ${{ steps.target-pull-request.outputs.result }};
+
+      - run: corepack enable
+          
+      - uses: actions/setup-node@v3
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        run: pnpm install --ignore-scripts
+      
       - name: Update Snapshots
         if: steps.alias-preview-url.outputs.status == 'READY'
         run: HOME=/root pnpm e2e:upd
         env:
           BASE_URL: https://${{ steps.alias-preview-url.outputs.preview_url_origin }}
-
-      - name: Add safe.directory
-        if: steps.alias-preview-url.outputs.status == 'READY'
-        run:
-          git config --global --add safe.directory /__w/next-startbootstrap-agency/next-startbootstrap-agency
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         if: steps.alias-preview-url.outputs.status == 'READY'
