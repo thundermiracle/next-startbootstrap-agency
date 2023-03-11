@@ -1,5 +1,9 @@
 name: e2e
-on: [deployment_status]
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   visual-tests:
@@ -8,14 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright:v1.31.2-focal
     steps:
-      - name: Get PR's issue number
-        uses: actions/github-script@v6
-        with:
-          script: |
-            console.log("context:", JSON.stringify(context));
-            core.setOutput('issue_number', context.issue.number);
-            throw new Error("")
-
       - uses: actions/checkout@v3
       
       - run: corepack enable
@@ -36,16 +32,6 @@ jobs:
           vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
           fail_when_cancelled: false
 
-      - name: Get PR's issue number
-        if: |
-          github.ref != 'refs/heads/main' &&
-          steps.alias-preview-url.outputs.status == 'READY'
-        id: target-pull-request
-        uses: actions/github-script@v6
-        with:
-          script: |
-            core.setOutput('issue_number', context.issue.number);
-
       - name: Find Comment for updating snapshots
         if: |
           github.ref != 'refs/heads/main' &&
@@ -53,7 +39,7 @@ jobs:
         uses: peter-evans/find-comment@v2
         id: fc
         with:
-          issue-number: ${{ steps.target-pull-request.outputs.issue_number }}
+          issue-number: ${{ github.event.number }}
           comment-author: 'github-actions[bot]'
           body-includes: '### Check the checkbox to automatically update all changed snapshots'
 
@@ -64,7 +50,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v2
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ github.context.payload.pull_request.number }}
+          issue-number: ${{ github.event.number }}
           edit-mode: replace
           body: |
             ### Check the checkbox to automatically update all changed snapshots
