@@ -17,9 +17,13 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
 
-      - run:
-          echo ${{github.event}};
-          echo ${{github.context.issue.number}};
+      - name: Get PR's issue number
+        id: target-pull-request
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log("context.issue.number:", context.issue.number)
+            core.setOutput('issue_number', context.issue.number);
 
       - name: Install dependencies
         run: pnpm install --ignore-scripts
@@ -39,7 +43,7 @@ jobs:
         uses: peter-evans/find-comment@v2
         id: fc
         with:
-          issue-number: ${{ github.context.payload.pull_request.number }}
+          issue-number: ${{ steps.target-pull-request.outputs.issue_number }}
           comment-author: 'github-actions[bot]'
           body-includes: '### Check the checkbox to automatically update all changed snapshots'
 
