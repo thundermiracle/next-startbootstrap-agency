@@ -1,14 +1,15 @@
 name: snapshot
 
 on:
-  issue_comment:
-    types: [edited]
+  # issue_comment:
+  #   types: [edited]
+  pull_request:
 
 jobs:
   update-snapshots:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,  '- [x] Update All Snapshots') }}
+    # if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,  '- [x] Update All Snapshots') }}
     container: mcr.microsoft.com/playwright:v1.31.2-focal
     permissions:
       contents: write
@@ -18,6 +19,22 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ github.head_ref }}
+
+      - name: Get the target branch's name
+        id: target-pull-request
+        uses: actions/github-script@v6
+        with:
+          script: |
+            return !(await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: github.event.issue.number,
+            })).data.head.ref
+
+      - name: Checkout target branch
+        run:
+          git fetch;
+          git checkout ${{ steps.target-pull-request.outputs.result }}
 
       - run: corepack enable
           
