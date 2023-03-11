@@ -12,8 +12,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log("context.issue:", JSON.stringify(context.issue));
-            console.log("context.payload:", JSON.stringify(context.payload.pull_request));
+            console.log("context:", JSON.stringify(context));
             core.setOutput('issue_number', context.issue.number);
             throw new Error("")
 
