@@ -70,7 +70,7 @@ jobs:
           script: |
             const eventName = '${{ github.event_name }}';
             if (eventName === 'pull_request') {
-              core.setOutput('dir', 'pull/${{ github.event.number }}/');
+              core.setOutput('dir', 'main/pull/${{ github.event.number }}/');
             } else {
               core.setOutput('dir', 'main/');
             }
