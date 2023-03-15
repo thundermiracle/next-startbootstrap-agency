@@ -85,7 +85,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./playwright-report/
-          destination_dir: ${{ steps.gh-pages-publish-info.output.dir }}
+          destination_dir: ${{ steps.gh-pages-publish-info.outputs.dir }}
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
 
@@ -112,5 +112,5 @@ jobs:
           issue-number: ${{ github.event.number }}
           body: |
             ### E2E test results
-            - [https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.output.dir }}](https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.output.dir }})
+            - [https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.outputs.dir }}](https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.outputs.dir }})
           edit-mode: replace
