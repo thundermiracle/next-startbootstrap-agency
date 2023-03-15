@@ -72,7 +72,7 @@ jobs:
             if (eventName === 'pull_request') {
               core.setOutput('dir', 'pull/${{ github.event.number }}/');
             } else {
-              core.setOutput('dir', '/');
+              core.setOutput('dir', 'main/');
             }
 
       - name: Publish to gh-pages
@@ -112,5 +112,5 @@ jobs:
           issue-number: ${{ github.event.number }}
           body: |
             ### E2E test results
-            - [https://thundermiracle.github.io/next-startbootstrap-agency/pull/${{ github.event.number }}/](https://thundermiracle.github.io/next-startbootstrap-agency/pull/${{ github.event.number }}/)
+            - [https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.output.dir }}](https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.output.dir }})
           edit-mode: replace
