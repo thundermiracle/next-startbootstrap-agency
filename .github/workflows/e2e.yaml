@@ -95,7 +95,7 @@ jobs:
           github.event_name == 'pull_request' &&
           steps.alias-preview-url.outputs.status == 'READY'
         uses: peter-evans/find-comment@v2
-        id: fc
+        id: fc-gh-pages
         with:
           issue-number: ${{ github.event.number }}
           comment-author: 'github-actions[bot]'
@@ -108,7 +108,7 @@ jobs:
           steps.alias-preview-url.outputs.status == 'READY'
         uses: peter-evans/create-or-update-comment@v2
         with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
+          comment-id: ${{ steps.fc-gh-pages.outputs.comment-id }}
           issue-number: ${{ github.event.number }}
           body: |
             ### E2E test results
