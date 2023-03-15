@@ -62,9 +62,57 @@ jobs:
         env:
           BASE_URL: https://${{ steps.alias-preview-url.outputs.preview_url_origin }}
 
-      - name: Upload HTML report as artifact.
-        uses: actions/upload-artifact@v3
-        if: always()
+      - name: Get destination_dir for publishing to gh-pages
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        id: gh-pages-publish-info
+        uses: actions/github-script@v6
         with:
-          name: visual-tests
-          path: playwright-report
+          script: |
+            const eventName = '${{ github.event_name }}';
+            if (eventName === 'pull_request') {
+              core.setOutput('dir', 'docs/pull/${{ github.event.number }}/');
+              core.setOutput('subPath', 'pull/${{ github.event.number }}/');
+            } else {
+              core.setOutput('dir', 'main/');
+              core.setOutput('subPath', '');
+            }
+
+      - name: Publish to gh-pages
+        if: |
+          github.base_ref == 'main' &&
+          github.event_name == 'pull_request' &&
+          steps.alias-preview-url.outputs.status == 'READY' &&
+          always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./playwright-report/
+          destination_dir: ${{ steps.gh-pages-publish-info.outputs.dir }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: 'Find comment for E2E test results'
+        if: |
+          github.base_ref == 'main' &&
+          github.event_name == 'pull_request' &&
+          steps.alias-preview-url.outputs.status == 'READY'
+        uses: peter-evans/find-comment@v2
+        id: fc-gh-pages
+        with:
+          issue-number: ${{ github.event.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: 'E2E test results'
+
+      - name: 'Create or update comment for E2E test results'
+        if: |
+          github.base_ref == 'main' &&
+          github.event_name == 'pull_request' &&
+          steps.alias-preview-url.outputs.status == 'READY'
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc-gh-pages.outputs.comment-id }}
+          issue-number: ${{ github.event.number }}
+          body: |
+            ### E2E test results
+            - [https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.outputs.subPath }}](https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.outputs.subPath }})
+          edit-mode: replace
