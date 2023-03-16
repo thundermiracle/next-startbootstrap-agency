@@ -79,8 +79,6 @@ jobs:
 
       - name: Publish to gh-pages
         if: |
-          github.base_ref == 'main' &&
-          github.event_name == 'pull_request' &&
           steps.alias-preview-url.outputs.status == 'READY' &&
           always()
         uses: peaceiris/actions-gh-pages@v3
