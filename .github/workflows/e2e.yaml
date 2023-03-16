@@ -73,7 +73,7 @@ jobs:
               core.setOutput('dir', 'docs/pull/${{ github.event.number }}/');
               core.setOutput('subPath', 'pull/${{ github.event.number }}/');
             } else {
-              core.setOutput('dir', 'main/');
+              core.setOutput('dir', 'docs/');
               core.setOutput('subPath', '');
             }
 
