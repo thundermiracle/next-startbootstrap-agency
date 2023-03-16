@@ -70,11 +70,10 @@ jobs:
           script: |
             const eventName = '${{ github.event_name }}';
             if (eventName === 'pull_request') {
-              core.setOutput('dir', 'docs/pull/${{ github.event.number }}/');
+              core.setOutput('dir', 'pull/${{ github.event.number }}/');
               core.setOutput('subPath', 'pull/${{ github.event.number }}/');
             } else {
-              core.setOutput('dir', 'docs/');
-              core.setOutput('subPath', '');
+              core.setOutput('dir', 'main/');
             }
 
       - name: Publish to gh-pages
@@ -88,7 +87,6 @@ jobs:
           destination_dir: ${{ steps.gh-pages-publish-info.outputs.dir }}
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-          keep_files: true
 
       - name: 'Find comment for E2E test results'
         if: |
