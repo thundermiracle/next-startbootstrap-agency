@@ -88,6 +88,7 @@ jobs:
           destination_dir: ${{ steps.gh-pages-publish-info.outputs.dir }}
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
+          keep_files: true
 
       - name: 'Find comment for E2E test results'
         if: |
