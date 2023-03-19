@@ -41,7 +41,6 @@ const PortfolioItem: FC<Props> = ({
       <div aria-hidden="true" onClick={handleShowDetail} className="relative cursor-pointer block">
         <Image
           className="img-fluid"
-          layout="responsive"
           width={400}
           height={300}
           src={imageSrc}

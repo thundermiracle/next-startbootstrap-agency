@@ -1,0 +1,26 @@
+{
+  "brand": "Start Bootstrap",
+  "menuText": "メニュー",
+  "menus": [
+    {
+      "anchor": "services",
+      "text": "サービス"
+    },
+    {
+      "anchor": "portfolio",
+      "text": "ポートフォリオ"
+    },
+    {
+      "anchor": "about",
+      "text": "沿革"
+    },
+    {
+      "anchor": "team",
+      "text": "チーム"
+    },
+    {
+      "anchor": "contact",
+      "text": "連絡方法"
+    }
+  ]
+}

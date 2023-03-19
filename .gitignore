@@ -33,3 +33,12 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+sw.js*
+workbox-*.js*
+
+# playwright test-results
+/test-results
+/playwright-report
+
+salt

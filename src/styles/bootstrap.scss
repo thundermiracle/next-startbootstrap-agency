@@ -54,3 +54,9 @@ $primary: #fed136 !default;
 // @import "~bootstrap/scss/spinners";
 // @import "~bootstrap/scss/offcanvas";
 // @import "~bootstrap/scss/placeholders";
+
+// force override default css
+.nav-link {
+  display: flex;
+  align-items: center;
+}

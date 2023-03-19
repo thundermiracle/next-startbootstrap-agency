@@ -34,9 +34,9 @@ const TimelineItem: FC<Props> = ({
             <div className="hw-100% relative">
               <Image
                 className="rounded-full"
-                layout="fill"
+                fill
                 src={imageSrc!}
-                alt={imageAlt || header || subheader}
+                alt={imageAlt || header || subheader || ''}
               />
             </div>
           )}

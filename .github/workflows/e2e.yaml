@@ -1,0 +1,119 @@
+name: e2e
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  visual-tests:
+    name: "basic visual comparison tests"
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.31.2-focal
+    steps:
+      - uses: actions/checkout@v3
+      
+      - run: corepack enable
+          
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --ignore-scripts
+      
+      - name: Get Vercel's Alias Preview URL
+        id: alias-preview-url
+        uses: justincase-jp/vercel-preview-url-alias@0.2.1
+        with:
+          vercel_access_token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
+          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
+          fail_when_cancelled: false
+
+      - name: Find Comment for updating snapshots
+        if: |
+          github.ref != 'refs/heads/main' &&
+          steps.alias-preview-url.outputs.status == 'READY'
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '### Check the checkbox to automatically update all changed snapshots'
+
+      - name: Comment
+        if: |
+          github.ref != 'refs/heads/main' &&
+          steps.alias-preview-url.outputs.status == 'READY'
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.number }}
+          edit-mode: replace
+          body: |
+            ### Check the checkbox to automatically update all changed snapshots
+            - [ ] Update All Snapshots
+
+      - name: Tests
+        if: steps.alias-preview-url.outputs.status == 'READY'
+        run: HOME=/root pnpm e2e
+        env:
+          BASE_URL: https://${{ steps.alias-preview-url.outputs.preview_url_origin }}
+
+      - name: Get destination_dir for publishing to gh-pages
+        if: |
+          steps.alias-preview-url.outputs.status == 'READY' &&
+          always()
+        id: gh-pages-publish-info
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const eventName = '${{ github.event_name }}';
+            if (eventName === 'pull_request') {
+              core.setOutput('dir', 'pull/${{ github.event.number }}/');
+              core.setOutput('subPath', 'pull/${{ github.event.number }}/');
+            } else {
+              core.setOutput('dir', 'main/');
+            }
+
+      - name: Publish to gh-pages
+        if: |
+          steps.alias-preview-url.outputs.status == 'READY' &&
+          always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./playwright-report/
+          destination_dir: ${{ steps.gh-pages-publish-info.outputs.dir }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: 'Find comment for E2E test results'
+        if: |
+          github.base_ref == 'main' &&
+          github.event_name == 'pull_request' &&
+          steps.alias-preview-url.outputs.status == 'READY' &&
+          always()
+        uses: peter-evans/find-comment@v2
+        id: fc-gh-pages
+        with:
+          issue-number: ${{ github.event.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: 'E2E test results'
+
+      - name: 'Create or update comment for E2E test results'
+        if: |
+          github.base_ref == 'main' &&
+          github.event_name == 'pull_request' &&
+          steps.alias-preview-url.outputs.status == 'READY' &&
+          always()
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc-gh-pages.outputs.comment-id }}
+          issue-number: ${{ github.event.number }}
+          body: |
+            ### E2E test results
+            - [https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.outputs.subPath }}](https://thundermiracle.github.io/next-startbootstrap-agency/${{ steps.gh-pages-publish-info.outputs.subPath }})
+          edit-mode: replace

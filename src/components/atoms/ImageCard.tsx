@@ -10,13 +10,28 @@ interface Props {
   header: string;
   subheader: string;
   extraInfo: any;
+  priority?: boolean;
 }
 
-const ImageCard: FC<Props> = ({ className, imageSrc, imageAlt, header, subheader, extraInfo }) => {
+const ImageCard: FC<Props> = ({
+  className,
+  imageSrc,
+  imageAlt,
+  header,
+  subheader,
+  extraInfo,
+  priority = false,
+}) => {
   return (
     <div className={clsx('relative bg-dark text-white text-center', className)}>
       <div className="h-491px md:h-759px">
-        <Image priority layout="fill" src={imageSrc} alt={imageAlt || header || subheader} />
+        <Image
+          className="object-cover"
+          priority={priority}
+          fill
+          src={imageSrc}
+          alt={imageAlt || header || subheader}
+        />
       </div>
       <div className="overlay">
         <div className="container h-100% mx-auto flex items-center justify-center">

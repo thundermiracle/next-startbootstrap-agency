@@ -1,0 +1,21 @@
+{
+  "brand": "Start Bootstrap",
+  "menuText": "Menu ",
+  "menus": [
+    {
+      "anchor": "services"
+    },
+    {
+      "anchor": "portfolio"
+    },
+    {
+      "anchor": "about"
+    },
+    {
+      "anchor": "team"
+    },
+    {
+      "anchor": "contact"
+    }
+  ]
+}

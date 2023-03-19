@@ -40,7 +40,7 @@ const TeamMember: FC<Props> = ({
       <div className="hw-239px rounded-img-border">
         <div className="hw-225px relative">
           <Image
-            layout="fill"
+            fill
             className="rounded-full "
             src={imageSrc}
             alt={imageAlt || header || subheader}
