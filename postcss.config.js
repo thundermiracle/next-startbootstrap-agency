@@ -1,6 +1,5 @@
 module.exports = {
   plugins: [
-    process.env.NODE_ENV === 'production' ? require('autoprefixer') : null,
     'postcss-flexbugs-fixes',
     [
       'postcss-preset-env',
@@ -19,8 +18,7 @@ module.exports = {
       {
         content: ['./src/pages/**/*.{js,jsx,ts,tsx}', './src/components/**/*.{js,jsx,ts,tsx}'],
         defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-        safelist: ['html', 'body', '.?*unocss.?*', 'uno.css'],
-        skippedContentGlobs: ['./src/styles/**/*'],
+        safelist: ['html', 'body'],
       },
     ],
   ],
