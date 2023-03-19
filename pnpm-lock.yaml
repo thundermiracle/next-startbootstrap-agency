@@ -20,6 +20,7 @@ specifiers:
   '@web-configs/eslint-plugin': ^0.5.0
   '@web-configs/prettier': ^0.1.2
   '@web-configs/typescript': ^0.2.2
+  autoprefixer: ^10.4.12
   bootstrap: ^5.2.1
   clsx: ^1.2.1
   eslint: ^8.23.0
@@ -69,6 +70,7 @@ devDependencies:
   '@web-configs/eslint-plugin': 0.5.0_fjfiei2macywnozzrlttcya6jm
   '@web-configs/prettier': 0.1.2
   '@web-configs/typescript': 0.2.2
+  autoprefixer: 10.4.12_postcss@8.4.16
   bootstrap: 5.2.1_@popperjs+core@2.11.6
   eslint: 8.23.0
   eslint-config-next: 12.2.5_itqs5654cmlnjraw6gjzqacppi
@@ -1665,7 +1667,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001344
+      caniuse-lite: 1.0.30001412
       electron-to-chromium: 1.4.141
       escalade: 3.1.1
       node-releases: 2.0.5
@@ -1727,6 +1729,7 @@ packages:
 
   /caniuse-lite/1.0.30001344:
     resolution: {integrity: sha512-0ZFjnlCaXNOAYcV7i+TtdKBp0L/3XEU2MF/x6Du1lrh+SRX4IfzIVL4HNJg5pB2PmFb8rszIGyOvsZnqqRoc2g==}
+    dev: false
 
   /caniuse-lite/1.0.30001412:
     resolution: {integrity: sha512-+TeEIee1gS5bYOiuf+PS/kp2mrXic37Hl66VY6EAfxasIk5fELTktK2oOezYed12H8w7jt3s512PpulQidPjwA==}
