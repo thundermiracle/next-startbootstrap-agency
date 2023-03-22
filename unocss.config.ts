@@ -25,7 +25,7 @@ export default defineConfig({
   ],
   shortcuts: {
     'sns-icon': 'text-10 inline-block hover:text-primary transition delay-50 ease-in-out',
-    'rounded-img-border': 'b-7 border-gray-200 rounded-full',
+    'rounded-img-border': 'b-7 border-gray-200 rounded-full border-style-solid',
     'f-center': 'flex justify-center items-center',
     'big-btn':
       'uppercase bg-primary color-white px-47px py-24px font-700 transition delay-50 ease-in-out cursor-pointer rd border-none text-18px',
