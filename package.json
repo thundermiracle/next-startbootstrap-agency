@@ -35,7 +35,7 @@
     "@playwright/test": "^1.32.1",
     "@popperjs/core": "^2.11.7",
     "@types/node": "^18.15.11",
-    "@types/react": "^18.0.31",
+    "@types/react": "^18.0.32",
     "@types/react-dom": "^18.0.11",
     "@types/react-scroll": "^1.8.6",
     "@types/throttle-debounce": "^5.0.0",
