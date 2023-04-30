@@ -10,7 +10,7 @@ jobs:
     name: "basic visual comparison tests"
     timeout-minutes: 5
     runs-on: ubuntu-latest
-    container: mcr.microsoft.com/playwright:v1.32.1-focal
+    container: mcr.microsoft.com/playwright:v1.33.0-focal
     steps:
       - uses: actions/checkout@v3
       
