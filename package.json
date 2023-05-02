@@ -37,7 +37,7 @@
     "@types/node": "^18.16.3",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.1",
-    "@types/react-scroll": "^1.8.6",
+    "@types/react-scroll": "^1.8.7",
     "@types/throttle-debounce": "^5.0.0",
     "@unocss/cli": "^0.51.8",
     "@unocss/preset-attributify": "^0.51.8",
@@ -58,7 +58,7 @@
     "sharp": "^0.32.1",
     "typescript": "^4.9.5",
     "unocss": "^0.51.8",
-    "vite": "^4.3.3"
+    "vite": "^4.3.4"
   },
   "prettier": "@web-configs/prettier",
   "pnpm": {
