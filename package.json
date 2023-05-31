@@ -1,7 +1,7 @@
 {
   "name": "next-startbootstrap-agency",
   "version": "0.1.0",
-  "packageManager": "pnpm@7.32.2",
+  "packageManager": "pnpm@8.6.0",
   "private": true,
   "license": "MIT",
   "scripts": {
