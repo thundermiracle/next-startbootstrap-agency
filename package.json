@@ -19,7 +19,7 @@
     "e2e:docker": "docker-compose build && docker-compose up"
   },
   "dependencies": {
-    "clsx": "^1.2.1",
+    "clsx": "^2.0.0",
     "next": "^13.4.19",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
