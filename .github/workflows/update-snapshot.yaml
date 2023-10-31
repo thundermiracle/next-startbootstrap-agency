@@ -52,7 +52,7 @@ jobs:
       - if: steps.alias-preview-url.outputs.status == 'READY'
         run: corepack enable
           
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         if: steps.alias-preview-url.outputs.status == 'READY'
         with:
           node-version-file: '.nvmrc'
