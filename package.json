@@ -53,7 +53,7 @@
     "next-pwa": "^5.6.0",
     "npm-run-all2": "^5.0.0",
     "playwright": "^1.33.0",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.5",
     "sass": "^1.62.1",
     "sharp": "^0.32.1",
     "typescript": "^5.1.3",
