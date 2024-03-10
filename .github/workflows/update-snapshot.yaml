@@ -68,7 +68,7 @@ jobs:
         env:
           BASE_URL: https://${{ steps.alias-preview-url.outputs.preview_url_origin }}
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         if: steps.alias-preview-url.outputs.status == 'READY'
         with:
           commit_message: 'chore: update changed snapshots'
