@@ -34,7 +34,7 @@
     "@iconify-json/fa-brands": "^1.1.4",
     "@playwright/test": "^1.33.0",
     "@popperjs/core": "^2.11.7",
-    "@types/node": "^18.16.3",
+    "@types/node": "^20.11.25",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.1",
     "@types/react-scroll": "^1.8.7",
