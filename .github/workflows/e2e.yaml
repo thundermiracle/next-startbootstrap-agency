@@ -10,7 +10,7 @@ jobs:
     name: "basic visual comparison tests"
     timeout-minutes: 5
     runs-on: ubuntu-latest
-    container: mcr.microsoft.com/playwright:v1.33.0-focal
+    container: mcr.microsoft.com/playwright:v1.42.1-focal
     steps:
       - uses: actions/checkout@v4
       
@@ -26,7 +26,7 @@ jobs:
       
       - name: Get Vercel's Alias Preview URL
         id: alias-preview-url
-        uses: justincase-jp/vercel-preview-url-alias@0.3.0
+        uses: justincase-jp/vercel-preview-url-alias@v0.3.3
         with:
           vercel_access_token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
           vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
