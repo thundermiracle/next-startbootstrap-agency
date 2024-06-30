@@ -36,7 +36,7 @@ jobs:
         if: |
           github.ref != 'refs/heads/main' &&
           steps.alias-preview-url.outputs.status == 'READY'
-        uses: peter-evans/find-comment@v2
+        uses: peter-evans/find-comment@v3
         id: fc
         with:
           issue-number: ${{ github.event.number }}
@@ -96,7 +96,7 @@ jobs:
           github.event_name == 'pull_request' &&
           steps.alias-preview-url.outputs.status == 'READY' &&
           always()
-        uses: peter-evans/find-comment@v2
+        uses: peter-evans/find-comment@v3
         id: fc-gh-pages
         with:
           issue-number: ${{ github.event.number }}
