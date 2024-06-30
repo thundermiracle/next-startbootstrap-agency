@@ -103,8 +103,8 @@ importers:
         specifier: ^6.1.2
         version: 6.1.2
       playwright:
-        specifier: ^1.33.0
-        version: 1.33.0
+        specifier: ^1.45.0
+        version: 1.45.0
       prettier:
         specifier: ^3.3.2
         version: 3.3.2
@@ -3337,9 +3337,14 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  playwright@1.33.0:
-    resolution: {integrity: sha512-+zzU3V2TslRX2ETBRgQKsKytYBkJeLZ2xzUj4JohnZnxQnivoUvOvNbRBYWSYykQTO0Y4zb8NwZTYFUO+EpPBQ==}
-    engines: {node: '>=14'}
+  playwright-core@1.45.0:
+    resolution: {integrity: sha512-lZmHlFQ0VYSpAs43dRq1/nJ9G/6SiTI7VPqidld9TDefL9tX87bTKExWZZUF5PeRyqtXqd8fQi2qmfIedkwsNQ==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright@1.45.0:
+    resolution: {integrity: sha512-4z3ac3plDfYzGB6r0Q3LF8POPR20Z8D0aXcxbJvmfMgSSq1hkcgvFRXJk9rUq5H/MJ0Ktal869hhOdI/zUTeLA==}
+    engines: {node: '>=18'}
     hasBin: true
 
   postcss@8.4.31:
@@ -6010,9 +6015,9 @@ snapshots:
     dependencies:
       event-target-shim: 5.0.1
 
-  acorn-import-assertions@1.8.0(acorn@8.11.3):
+  acorn-import-assertions@1.8.0(acorn@8.12.0):
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.12.0
 
   acorn-jsx@5.3.2(acorn@8.12.0):
     dependencies:
@@ -7918,9 +7923,13 @@ snapshots:
 
   playwright-core@1.33.0: {}
 
-  playwright@1.33.0:
+  playwright-core@1.45.0: {}
+
+  playwright@1.45.0:
     dependencies:
-      playwright-core: 1.33.0
+      playwright-core: 1.45.0
+    optionalDependencies:
+      fsevents: 2.3.2
 
   postcss@8.4.31:
     dependencies:
@@ -8676,8 +8685,8 @@ snapshots:
       '@webassemblyjs/ast': 1.11.1
       '@webassemblyjs/wasm-edit': 1.11.1
       '@webassemblyjs/wasm-parser': 1.11.1
-      acorn: 8.11.3
-      acorn-import-assertions: 1.8.0(acorn@8.11.3)
+      acorn: 8.12.0
+      acorn-import-assertions: 1.8.0(acorn@8.12.0)
       browserslist: 4.23.0
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.10.0
