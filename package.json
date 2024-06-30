@@ -52,7 +52,7 @@
     "eslint-config-next": "^14.2.4",
     "next-pwa": "^5.6.0",
     "npm-run-all2": "^6.1.2",
-    "playwright": "^1.33.0",
+    "playwright": "^1.45.0",
     "prettier": "^3.3.2",
     "sass": "^1.62.1",
     "sharp": "^0.32.1",
