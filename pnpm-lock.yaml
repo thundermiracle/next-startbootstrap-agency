@@ -19,7 +19,7 @@ importers:
         version: 18.3.1
       react-bootstrap:
         specifier: ^2.7.4
-        version: 2.7.4(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 2.7.4(@types/react@18.3.14)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
@@ -52,11 +52,11 @@ importers:
         specifier: ^20.11.25
         version: 20.11.25
       '@types/react':
-        specifier: ^18.3.11
-        version: 18.3.11
+        specifier: ^18.3.14
+        version: 18.3.14
       '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.0
+        specifier: ^18.3.2
+        version: 18.3.2
       '@types/react-scroll':
         specifier: ^1.8.7
         version: 1.8.7
@@ -1344,8 +1344,8 @@ packages:
   '@types/prop-types@15.7.5':
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
-  '@types/react-dom@18.3.0':
-    resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
+  '@types/react-dom@18.3.2':
+    resolution: {integrity: sha512-Fqp+rcvem9wEnGr3RY8dYNvSQ8PoLqjZ9HLgaPUOjJJD120uDyOxOjc/39M4Kddp9JQCxpGQbnhVQF0C0ncYVg==}
 
   '@types/react-scroll@1.8.7':
     resolution: {integrity: sha512-BB8g+hQL7OtBPWg/NcES6p5u6vduZonGl1BxrsGUwcefE53pfI0pFDd1lRFndgEUE6whYdFfhD+j0sZZT/6brQ==}
@@ -1353,8 +1353,8 @@ packages:
   '@types/react-transition-group@4.4.5':
     resolution: {integrity: sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==}
 
-  '@types/react@18.3.11':
-    resolution: {integrity: sha512-r6QZ069rFTjrEYgFdOck1gK7FLVsgJE7tTz0pQBczlBNUhBNk0MQH4UbnFSwjpQLMkLzgqvBBa+qGpLje16eTQ==}
+  '@types/react@18.3.14':
+    resolution: {integrity: sha512-NzahNKvjNhVjuPBQ+2G7WlxstQ+47kXZNHlUvFakDViuIEfGY926GqhMueQFZ7woG+sPiQKlF36XfrIUVSUfFg==}
 
   '@types/resolve@1.17.1':
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
@@ -1662,6 +1662,7 @@ packages:
 
   acorn-import-assertions@1.8.0:
     resolution: {integrity: sha512-m7VZ3jwz4eK6A4Vtt8Ew1/mNbP24u0FhdyfA7fSvnJR6LMdfOYnmuIrrJAgrYfYJ10F/otaHTtrtrtmHdMNzEw==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
 
@@ -5751,19 +5752,19 @@ snapshots:
 
   '@types/prop-types@15.7.5': {}
 
-  '@types/react-dom@18.3.0':
+  '@types/react-dom@18.3.2':
     dependencies:
-      '@types/react': 18.3.11
+      '@types/react': 18.3.14
 
   '@types/react-scroll@1.8.7':
     dependencies:
-      '@types/react': 18.3.11
+      '@types/react': 18.3.14
 
   '@types/react-transition-group@4.4.5':
     dependencies:
-      '@types/react': 18.3.11
+      '@types/react': 18.3.14
 
-  '@types/react@18.3.11':
+  '@types/react@18.3.14':
     dependencies:
       '@types/prop-types': 15.7.5
       csstype: 3.1.0
@@ -8547,7 +8548,7 @@ snapshots:
       minimist: 1.2.6
       strip-json-comments: 2.0.1
 
-  react-bootstrap@2.7.4(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-bootstrap@2.7.4(@types/react@18.3.14)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.21.0
       '@restart/hooks': 0.4.9(react@18.3.1)
@@ -8564,7 +8565,7 @@ snapshots:
       uncontrollable: 7.2.1(react@18.3.1)
       warning: 4.0.3
     optionalDependencies:
-      '@types/react': 18.3.11
+      '@types/react': 18.3.14
 
   react-dom@18.3.1(react@18.3.1):
     dependencies:
@@ -9217,7 +9218,7 @@ snapshots:
   uncontrollable@7.2.1(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.21.0
-      '@types/react': 18.3.11
+      '@types/react': 18.3.14
       invariant: 2.2.4
       react: 18.3.1
       react-lifecycles-compat: 3.0.4
