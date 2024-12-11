@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: ${{ github.event.issue.pull_request && contains(github.event.comment.body,  '- [x] Update All Snapshots') }}
-    container: mcr.microsoft.com/playwright:v1.33.0-focal
+    container: mcr.microsoft.com/playwright:v1.48.2-focal
     permissions:
       contents: write
     steps:
@@ -35,7 +35,7 @@ jobs:
 
       - name: Get Vercel's Alias Preview URL
         id: alias-preview-url
-        uses: justincase-jp/vercel-preview-url-alias@0.3.0
+        uses: justincase-jp/vercel-preview-url-alias@v0.3.3
         with:
           vercel_access_token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
           vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
